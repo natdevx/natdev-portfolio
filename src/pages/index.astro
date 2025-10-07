@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from "../components/Hero.astro";
-import AboutMe from '../components/features/aboutMe/AboutMe.astro';
-import AboutMeSection from "../components/features/aboutMe/AboutMeSection.astro";
+
+import AboutMeSection from "../components/features/aboutMe/TabsAbout.astro";
+import TabsAbout from '../components/features/aboutMe/TabsAbout.astro';
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -10,7 +12,5 @@ import AboutMeSection from "../components/features/aboutMe/AboutMeSection.astro"
 
 <Layout>
 	<Hero />
-
-	
-	<AboutMeSection />
+	<TabsAbout />
 </Layout>
