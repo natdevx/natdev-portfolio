@@ -1,3 +1,154 @@
-<h1 class="text-2xl text-blue-400 py-10">
-    Esta es la session de los proyectos
-</h1>
+---
+import GitHub from "../../icons/Github.astro";
+import Link from "../../icons/Link.astro";
+
+const proyectos = [
+  {
+    titulo: "Portafolio Personal",
+    descripcion:
+      "Mi sitio web desarrollado con Astro, Tailwind y animaciones suaves. Muestra mis habilidades, proyectos y contacto.",
+    imagen: "/projects/portfolio.webp",
+    tecnologias: ["astro", "tailwind", "javascript"],
+    github: "https://github.com/natdevx/natdev-portfolio",
+    demo: "https://natdevx.vercel.app",
+  },
+  {
+    titulo: "Plataforma CSAS",
+    descripcion:
+      "Proyecto fullstack con autenticación, panel de administración y conexión con API. Hecho con Laravel y Angular.",
+    imagen: "/projects/csas.webp",
+    tecnologias: ["laravel", "angular", "mysql"],
+    github: "https://github.com/natdevx/csas-platform",
+  },
+  {
+    titulo: "Landing Page Animada",
+    descripcion:
+      "Landing moderna con diseño responsivo y efectos de scroll. Creada con Astro y Tailwind CSS.",
+    imagen: "/projects/landing.webp",
+    tecnologias: ["astro", "tailwind", "framer"],
+    demo: "#",
+  },
+];
+---
+
+<section
+  id="proyectos"
+  class="container mx-auto px-6 md:px-12 lg:px-16 py-20 flex flex-col items-center gap-16 opacity-0 translate-y-10 transition-all duration-1000 ease-out projects-section"
+>
+  <h2 class="text-5xl font-bold text-[var(--color-primary)] text-center">
+    Proyectos
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
+    {proyectos.map((proyecto) => (
+      <article
+        class="bg-[var(--color-surface)] shadow-md hover:shadow-xl rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 flex flex-col"
+      >
+        <!-- Imagen -->
+        <div class="relative overflow-hidden">
+          <img
+            src={proyecto.imagen}
+            alt={proyecto.titulo}
+            class="w-full h-56 object-cover transition-transform duration-500 hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Contenido -->
+        <div class="p-6 flex flex-col flex-1">
+          <!-- Título -->
+          <h3 class="text-2xl font-semibold text-[var(--color-heading)] mb-4">
+            {proyecto.titulo}
+          </h3>
+
+          <!-- Tecnologías con íconos -->
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            {proyecto.tecnologias.map((tech) => (
+              <div
+                class="flex items-center gap-2 bg-[var(--color-primary)]/10 text-[var(--color-primary)] 
+                       rounded-full px-3 py-1 text-sm font-medium transition-transform duration-300 hover:scale-110"
+              >
+                <img
+                  src={`https://go-skill-icons.vercel.app/api/icons?i=${tech.toLowerCase()}`}
+                  alt={tech}
+                  class="w-5 h-5"
+                  loading="lazy"
+                />
+                <!-- Nombre del lenguaje -->
+                <span class="hidden md:inline">{tech}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Descripción -->
+          <p class="text-gray-500 dark:text-gray-400 mb-6">
+            {proyecto.descripcion}
+          </p>
+
+          <!-- Botones -->
+          <div class="flex gap-4 mt-auto">
+            <!-- Botón GitHub -->
+            {proyecto.github && (
+              <a
+                href={proyecto.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+                       border border-[var(--color-primary)] text-[var(--color-primary)]
+                       hover:bg-[var(--color-primary)] hover:text-white transition-all duration-300 group"
+              >
+                <GitHub class="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Código
+              </a>
+            )}
+
+            <!-- Botón Preview -->
+            {proyecto.demo && proyecto.demo !== "#" ? (
+              <a
+                href={proyecto.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+                       border border-[var(--color-secondary)] text-[var(--color-secondary)]
+                       hover:bg-[var(--color-secondary)] hover:text-white transition-all duration-300 group"
+              >
+                <Link class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Preview
+              </a>
+            ) : (
+              <button
+                disabled
+                class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+                       border border-gray-300 text-gray-400 cursor-not-allowed opacity-70"
+              >
+                <Link class="w-5 h-5" />
+                Preview
+              </button>
+            )}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- Animación de aparición -->
+<script is:inline>
+  if (typeof window !== "undefined") {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            entry.target.classList.remove("opacity-0", "translate-y-10");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".projects-section").forEach((el) => {
+      observer.observe(el);
+    });
+  }
+</script>

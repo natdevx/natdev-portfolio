@@ -1,6 +1,15 @@
 ---
 import ArrowNarrowRight from "../components/icons/ArrowNarrowRight.astro";
 import ExternalLink from "../components/icons/ExternalLink.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import GithubIcon from "../components/icons/Github.astro";
+import LinkedinIcon from "../components/icons/Linkedin.astro";
+
+const redes = [
+  { nombre: "Correo", icono: MailIcon, link: "mailto:natdev.contacto@gmail.com" },
+  { nombre: "GitHub", icono: GithubIcon, link: "https://github.com/natdevx" },
+  { nombre: "LinkedIn", icono: LinkedinIcon, link: "https://www.linkedin.com/in/natdevx/" },
+];
 ---
 
 <section class="relative min-h-[90vh] flex items-center py-20">
@@ -43,6 +52,25 @@ import ExternalLink from "../components/icons/ExternalLink.astro";
           <ExternalLink class="w-5 h-5" />
         </a>
       </div>
+
+      <!-- REDES -->
+      <div class="flex gap-5">
+        {redes.map((r) => {
+          const Icono = r.icono;
+          return (
+            <a
+              href={r.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-3 rounded-full bg-[var(--color-surface)] dark:bg-[var(--color-bg)] shadow-md 
+                     hover:bg-[var(--color-secondary)] hover:text-white transition-all duration-300"
+              aria-label={r.nombre} >
+              <Icono class="w-8 h-8" />
+            </a>
+          );
+        })}
+      </div>
+
     </div>
 
     <!-- Imagen -->
