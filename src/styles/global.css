@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-/* ===========================
-   🎨 Paleta global y fuentes
-=========================== */
+/* Paleta global y fuentes */
 @layer base {
   :root {
     --color-text: #0f172a;
@@ -27,9 +25,7 @@
     color-scheme: dark;
   }
 
-  /* ===========================
-    Fondo Deep Ocean Glow
-  =========================== */
+  /* Fondo Deep Ocean Glow */
   html,
   body {
     @apply min-h-screen w-full relative text-[var(--color-text)];
@@ -42,7 +38,7 @@
     background-size: cover;
   }
 
-  /* === 🌙 Modo Oscuro === */
+  /* Modo Oscuro */
   html.dark body {
     background:
       radial-gradient(
@@ -72,7 +68,7 @@
     background-color: #000309;
   }
 
-  /* === ☀️ Modo Claro === */
+  /* Modo Claro */
   html:not(.dark) body {
     background:
       radial-gradient(
@@ -100,9 +96,7 @@
     background-color: #ffffff;
   }
 
-  /* ===========================
-     ✍️ Tipografía global
-  =========================== */
+  /* Tipografía global */
   h1, h2, h3, h4 {
     font-family: 'Space Grotesk', sans-serif;
     color: var(--color-heading);
@@ -121,9 +115,7 @@
     color: var(--color-accent);
   }
 
-  /* ===========================
-     🔮 Efecto Glass
-  =========================== */
+  /* Efecto Glass */
   .glass {
     backdrop-filter: blur(12px);
     background-color: rgba(255, 255, 255, 0.25);
@@ -135,6 +127,6 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 120px; /* evita que el header tape el contenido */
   }
-
 }

@@ -1,20 +1,21 @@
 ---
-
 ---
 
-<!-- Contenedor general -->
+<!-- 🔹 Contenedor general -->
 <section
-  class="container mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-12 sobre-mi opacity-0 translate-y-10 transition-all duration-1000 ease-out"
-  id="sobre-mi">
+  id="educacion"
+  class="container w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12 educacion opacity-0 translate-y-10 transition-all duration-1000 ease-out"
+>
   <div class="w-full flex flex-col p-4">
     <h2 class="font-bold text-5xl text-left mb-6 text-[var(--color-heading)]">
       Educación
     </h2>
 
-    <!-- Tarjeta -->
-    <div
+    <!-- 🔹 Tarjeta -->
+    <article
       class="group relative w-full bg-[var(--color-surface)] shadow-md rounded-2xl overflow-hidden 
-             transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl">
+             transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl"
+    >
       <img
         src="/education.webp"
         alt="Educación"
@@ -23,37 +24,55 @@
       />
 
       <div class="p-6">
-        <div class="flex items-center justify-between">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
           <h3 class="text-2xl font-semibold text-[var(--color-primary)]">
             Instituto Tecnológico Superior de Calkiní (ITESCAM)
           </h3>
-          <span class="bg-[var(--color-primary)] text-white text-sm font-medium px-3 py-1 rounded-full">
-            2020-2025
+          <span
+            class="bg-[var(--color-primary)] text-white text-sm font-medium px-3 py-1 rounded-full"
+          >
+            2020–2025
           </span>
         </div>
+
         <p class="text-[var(--color-secondary)] font-medium mb-3">
           Ingeniería en Sistemas Computacionales
         </p>
+
         <p class="text-base leading-relaxed text-gray-500">
-          Durante mi formación en la universidad, trabajé en proyectos de redes, bases de datos, desarrollo móvil con Android Studio 
-          y robótica con Arduino. También tuve una introducción a la inteligencia artificial y programación web, donde descubrí 
-          mi gusto por el desarrollo frontend. Desde entonces, sigo aprendiendo de forma autodidacta cada día.
+          Durante mi formación universitaria, participé en proyectos de redes, bases de datos,
+          desarrollo móvil con Android Studio y robótica con Arduino. También tuve una introducción
+          a la inteligencia artificial y la programación web, donde descubrí mi gusto por el
+          desarrollo frontend. Desde entonces, sigo aprendiendo de forma autodidacta cada día.
         </p>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
+<!-- 🔹 Script para animar al hacer scroll -->
 <script>
-  // 👇 Pequeño script para activar la animación cuando entra en pantalla
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("opacity-100", "translate-y-0");
-        entry.target.classList.remove("opacity-0", "translate-y-10");
-      }
-    });
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("opacity-100", "translate-y-0");
+          entry.target.classList.remove("opacity-0", "translate-y-10");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-  document.querySelectorAll(".sobre-mi").forEach((el) => observer.observe(el));
+  document.querySelectorAll(".educacion").forEach((el) => observer.observe(el));
 </script>
+
+<!-- 🔹 Estilos adicionales -->
+<style>
+  @media (max-width: 768px) {
+    .educacion img {
+      height: 280px;
+    }
+  }
+</style>

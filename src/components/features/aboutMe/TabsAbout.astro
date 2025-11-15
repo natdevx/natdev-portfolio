@@ -10,15 +10,15 @@ import SchoolIcon from "../../icons/School.astro";
 import ToolsIcon from "../../icons/Tools.astro";
 
 const sections = [
-  { id: "about", label: "Acerca de mí", icon: UserIcon },
+  { id: "about-me", label: "Acerca de mí", icon: UserIcon },
   { id: "experience", label: "Experiencia", icon: BriefcaseIcon },
   { id: "education", label: "Educación", icon: SchoolIcon },
   { id: "skills", label: "Habilidades", icon: ToolsIcon },
 ];
 ---
 
-<section class="w-full flex flex-col items-center gap-10 mt-20">
-  <!-- Nav de secciones (botones) -->
+<section id="about" class="w-full flex flex-col items-center gap-10 mt-20">
+  <!-- 🔹 Nav de secciones -->
   <nav id="section-nav" class="flex flex-wrap justify-center gap-5">
     {sections.map((section, index) => {
       const Icon = section.icon;
@@ -26,19 +26,19 @@ const sections = [
         <button
           type="button"
           data-section={section.id}
-          class={`flex items-center gap-2 px-6 py-3 text-lg rounded-xl font-semibold border-2 transition-all duration-200
+          class={`flex items-center gap-2 px-6 py-3 text-lg rounded-xl font-semibold border-2 transition-all duration-300
             ${index === 0 ? "active-btn" : "inactive-btn"}`}
         >
-          <Icon class="w-5 h-5" />
+          <Icon class="w-6 h-6 stroke-[2.3]" />
           {section.label}
         </button>
       );
     })}
   </nav>
 
-  <!-- Contenedor de contenido: los IDs aquí son los que usa el script -->
+  <!-- 🔹 Contenedor de secciones -->
   <div id="content" class="w-full mt-8 max-w-6xl">
-    <div id="about" class="section">{/* visible por defecto */}
+    <div id="about-me" class="section">
       <AboutMe />
     </div>
 
@@ -56,67 +56,83 @@ const sections = [
   </div>
 </section>
 
-
+<!-- 🔹 Script -->
 <script client:load>
-  // Tipado simple para evitar warnings TS en editores
   const buttons = Array.from(document.querySelectorAll('#section-nav button'));
   const sections = Array.from(document.querySelectorAll('.section'));
 
   function showSectionById(targetId) {
-    // ocultar todas
-    sections.forEach(s => s.classList.add('hidden'));
-    // mostrar la que corresponde (si existe)
+    // Ocultar todas
+    sections.forEach((s) => s.classList.add('hidden'));
+    // Mostrar la seleccionada
     const el = document.getElementById(targetId);
     if (el) {
       el.classList.remove('hidden');
-      // opcional: animación de entrada
       el.classList.add('fade-in');
       setTimeout(() => el.classList.remove('fade-in'), 350);
     }
   }
 
-  buttons.forEach(btn => {
+  buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetId = btn.dataset.section;
       if (!targetId) return;
 
-      // actualizar estados visuales de los botones
-      buttons.forEach(b => {
+      // Actualizar estado de los botones
+      buttons.forEach((b) => {
         b.classList.remove('active-btn');
         b.classList.add('inactive-btn');
       });
       btn.classList.add('active-btn');
       btn.classList.remove('inactive-btn');
 
-      // mostrar la sección correcta
+      // Mostrar la sección correspondiente
       showSectionById(targetId);
-
-      // opcional: hacer scroll al contenido (si quieres)
-      // document.getElementById('content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 </script>
 
+<!-- 🔹 Estilos -->
 <style>
-  .hidden { display: none; }
-  .fade-in { animation: fadeIn .35s ease both; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: none;} }
+  .hidden {
+    display: none;
+  }
 
-  /* estilos de los botones (usa tus variables CSS) */
+  .fade-in {
+    animation: fadeIn 0.35s ease both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* ---- Botones ---- */
+  #section-nav button {
+    min-width: 180px;
+  }
+
   .inactive-btn {
     border-color: var(--color-border);
     color: var(--color-text);
     background: transparent;
   }
+
   .inactive-btn:hover {
-    background: rgba(34,197,94,0.06); /* ejemplo hover */
+    background: rgba(34, 197, 94, 0.08);
+    color: var(--color-primary);
   }
+
   .active-btn {
     background: var(--color-primary);
     color: white;
     border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
   }
-
-  /* tamaño mínimo para que se vean grandes */
-  #section-nav button { min-width: 180px; }
 </style>
