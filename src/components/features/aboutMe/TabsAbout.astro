@@ -18,7 +18,7 @@ const sections = [
 ---
 
 <section id="about" class="w-full flex flex-col items-center gap-10 mt-20">
-  <!-- 🔹 Nav de secciones -->
+  <!-- Nav de secciones -->
   <nav id="section-nav" class="flex flex-wrap justify-center gap-5">
     {sections.map((section, index) => {
       const Icon = section.icon;
@@ -27,8 +27,7 @@ const sections = [
           type="button"
           data-section={section.id}
           class={`flex items-center gap-2 px-6 py-3 text-lg rounded-xl font-semibold border-2 transition-all duration-300
-            ${index === 0 ? "active-btn" : "inactive-btn"}`}
-        >
+            ${index === 0 ? "active-btn" : "inactive-btn"}`} >
           <Icon class="w-6 h-6 stroke-[2.3]" />
           {section.label}
         </button>
@@ -36,7 +35,7 @@ const sections = [
     })}
   </nav>
 
-  <!-- 🔹 Contenedor de secciones -->
+  <!-- Contenedor de secciones -->
   <div id="content" class="w-full mt-8 max-w-6xl">
     <div id="about-me" class="section">
       <AboutMe />
@@ -56,7 +55,7 @@ const sections = [
   </div>
 </section>
 
-<!-- 🔹 Script -->
+<!-- Script -->
 <script client:load>
   const buttons = Array.from(document.querySelectorAll('#section-nav button'));
   const sections = Array.from(document.querySelectorAll('.section'));
@@ -92,7 +91,7 @@ const sections = [
   });
 </script>
 
-<!-- 🔹 Estilos -->
+<!-- Estilos -->
 <style>
   .hidden {
     display: none;
@@ -113,7 +112,7 @@ const sections = [
     }
   }
 
-  /* ---- Botones ---- */
+  /* Botones */
   #section-nav button {
     min-width: 180px;
   }

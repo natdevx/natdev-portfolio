@@ -73,16 +73,16 @@ import ThemeToggle from "./ThemeToggle.astro";
     const mobileToggle = document.getElementById("mobile-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    // 🔹 Mostrar menú móvil
+    // Mostrar menú móvil
     mobileToggle.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
 
-    // 🔹 Marcar "Inicio" activo al cargar
+    // Marcar "Inicio" activo al cargar
     navLinks.forEach(link => link.classList.remove("active"));
     navLinks[0].classList.add("active");
 
-    // 🔹 Función para marcar la sección actual
+    // Función para marcar la sección actual
     const setActiveLink = () => {
       let current = "home"; // valor por defecto
 
@@ -90,7 +90,7 @@ import ThemeToggle from "./ThemeToggle.astro";
         const sectionTop = section.offsetTop - 180;
         const sectionHeight = section.offsetHeight;
 
-        // 🔸 Caso especial: todo lo de “Acerca de mí” cuenta como una sola sección
+        // Caso especial: todo lo de “Acerca de mí” cuenta como una sola sección
         if (
           section.id === "about" ||
           section.closest("#about")
@@ -121,13 +121,13 @@ import ThemeToggle from "./ThemeToggle.astro";
     window.addEventListener("scroll", setActiveLink);
     setActiveLink();
 
-    // 🔹 Scroll suave con compensación
+    // Scroll suave con compensación
     const smoothScroll = (link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const targetId = link.getAttribute("href");
 
-        // ✅ Solución: si es “Inicio”, sube al principio
+        // Solución: si es “Inicio”, sube al principio
         if (targetId === "#home") {
           window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
@@ -150,7 +150,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 
   <style>
-    /* 🔹 Enlaces normales */
+    /* Enlaces normales */
     .nav-link {
       position: relative;
       color: var(--color-text);
@@ -160,7 +160,7 @@ import ThemeToggle from "./ThemeToggle.astro";
       color: var(--color-primary);
     }
 
-    /* 🔹 Activo */
+    /* Activo */
     .nav-link.active {
       color: var(--color-primary);
       font-weight: 600;
@@ -176,7 +176,7 @@ import ThemeToggle from "./ThemeToggle.astro";
       border-radius: 2px;
     }
 
-    /* 🔹 Enlaces menú móvil */
+    /* Enlaces menú móvil */
     .mobile-link {
       color: var(--color-text);
       transition: color 0.3s ease;

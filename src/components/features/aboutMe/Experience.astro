@@ -35,22 +35,22 @@ const experiencias = [
 ];
 ---
 
-<!-- 🔹 Sección de Experiencia -->
+<!-- Sección de Experiencia -->
 <section
   id="experiencia"
-  class="container w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center gap-12 experiencia opacity-0 translate-y-10 transition-all duration-1000 ease-out"
->
+  class="container w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center gap-12 experiencia 
+        opacity-0 translate-y-10 transition-all duration-1000 ease-out">
   <div class="w-full flex flex-col p-4">
     <h2 class="font-bold text-5xl text-left mb-6 text-[var(--color-heading)]">
       Experiencia
     </h2>
 
-    <!-- 🔹 Grid de tarjetas -->
+    <!-- Grid de tarjetas -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {experiencias.map((exp) => (
         <article
-          class="group relative bg-[var(--color-surface)] rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 ease-in-out hover:-translate-y-2 border border-[var(--color-border)]/10"
-        >
+          class="group relative bg-[var(--color-surface)] rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 
+                ease-in-out hover:-translate-y-2 border border-[var(--color-border)]/10">
           <!-- Encabezado -->
           <div class="flex items-center gap-4 p-6 pb-2">
             <img
@@ -67,8 +67,7 @@ const experiencias = [
             </div>
             {exp.actual && (
               <span
-                class="ml-auto bg-blue-500/90 text-white text-xs px-3 py-1 rounded-full"
-              >
+                class="ml-auto bg-blue-500/90 text-white text-xs px-3 py-1 rounded-full">
                 Actual
               </span>
             )}
@@ -80,7 +79,7 @@ const experiencias = [
               {exp.descripcion}
             </p>
 
-            <!-- 🔹 Datos con íconos personalizados -->
+            <!-- Datos con íconos personalizados -->
             <div class="text-sm text-gray-500 space-y-1">
               <p class="flex items-center gap-2">
                 <Clock class="w-4 h-4 text-[var(--color-secondary)]" />
@@ -102,7 +101,7 @@ const experiencias = [
   </div>
 </section>
 
-<!-- 🔹 Animación scroll -->
+<!-- Animación scroll -->
 <script>
   const observer = new IntersectionObserver(
     (entries) => {
@@ -122,7 +121,7 @@ const experiencias = [
     .forEach((el) => observer.observe(el));
 </script>
 
-<!-- 🔹 Estilos responsivos -->
+<!-- Estilos responsivos -->
 <style>
   @media (max-width: 768px) {
     .experiencia img {

@@ -1,7 +1,5 @@
----
----
 
-<!-- 🔹 Contenedor general -->
+<!-- Contenedor general -->
 <section
   id="educacion"
   class="container w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12 educacion opacity-0 translate-y-10 transition-all duration-1000 ease-out"
@@ -11,11 +9,10 @@
       Educación
     </h2>
 
-    <!-- 🔹 Tarjeta -->
+    <!-- Tarjeta -->
     <article
       class="group relative w-full bg-[var(--color-surface)] shadow-md rounded-2xl overflow-hidden 
-             transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl"
-    >
+             transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl">
       <img
         src="/education.webp"
         alt="Educación"
@@ -29,8 +26,7 @@
             Instituto Tecnológico Superior de Calkiní (ITESCAM)
           </h3>
           <span
-            class="bg-[var(--color-primary)] text-white text-sm font-medium px-3 py-1 rounded-full"
-          >
+            class="bg-[var(--color-primary)] text-white text-sm font-medium px-3 py-1 rounded-full">
             2020–2025
           </span>
         </div>
@@ -50,7 +46,7 @@
   </div>
 </section>
 
-<!-- 🔹 Script para animar al hacer scroll -->
+<!-- Script para animar al hacer scroll -->
 <script>
   const observer = new IntersectionObserver(
     (entries) => {
@@ -68,7 +64,7 @@
   document.querySelectorAll(".educacion").forEach((el) => observer.observe(el));
 </script>
 
-<!-- 🔹 Estilos adicionales -->
+<!-- Estilos adicionales -->
 <style>
   @media (max-width: 768px) {
     .educacion img {
